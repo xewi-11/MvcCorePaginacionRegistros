@@ -1,0 +1,40 @@
+﻿@model VistaDepartamento
+
+<H1>Paginacion individual</H1>
+
+
+<h3 style="color:blue">Registro @Model.posicion sw @ViewData["ULTIMO"]</h3>
+
+<div>
+    <ul>
+        <li class="list-group-item">
+            <a asp-action="RegistroVistaDepartamento" asp-route-posicion="1" class="btn btn-primary">Primero</a>
+           
+        </li>
+        <li class="list-group-item">
+            <a asp-action="RegistroVistaDepartamento" asp-route-posicion="@ViewData["ANTERIOR"]" class="btn btn-primary">Anterior</a>
+           
+        </li>
+        <li class="list-group-item">
+            <a asp-action="RegistroVistaDepartamento" asp-route-posicion="@ViewData["SIGUIENTE"]" class="btn btn-primary">Siguiente</a>
+           
+        </li>
+        <li class="list-group-item">
+            <a asp-action="RegistroVistaDepartamento" asp-route-posicion="@ViewData["ULTIMO"]" class="btn btn-primary">Ultimo</a>
+        </li>
+        </li>
+    </ul>
+</div>
+
+<ul>
+    <li>
+        Id: @Model.IdDepartamento
+    </li>
+    <li>
+        Nombre: @Model.Nombre
+    </li>
+    <li>
+        Localidad: @Model.Localidad
+    </li>
+
+</ul>

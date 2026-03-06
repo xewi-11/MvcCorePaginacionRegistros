@@ -1,0 +1,33 @@
+﻿@model List<VistaDepartamento>
+@{
+    ViewData["Title"] = "GrupoVIstaDepartamentos";
+}
+<h1>GrupoVIstaDepartamentos PAginacion completa</h1>
+
+<hr />
+@Html.Raw(
+ViewData["LINKS"])
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Posicion</th>
+            <th>IdDepartamento</th>
+            <th>Nombre</th>
+            <th>Localidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.posicion</td>
+                <td>@item.IdDepartamento</td>
+                <td>@item.Nombre</td>
+                <td>@item.Localidad</td>
+            </tr>
+        }
+    </tbody>
+
+</table>
