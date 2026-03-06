@@ -1,12 +1,24 @@
 ﻿@model List<VistaDepartamento>
 @{
     ViewData["Title"] = "GrupoVIstaDepartamentos";
+
+    int numRegistros = (int)ViewData["NUMREG"];
+    int numPag = (int)ViewData["NUMPAG"];
+    string html = "<div>";
+   
+}
+@for (int i = 1; i <= numRegistros; i += 2)
+{
+
+    <a asp-asp-controller="Paginacion" asp-action="GrupoVIstaDepartamentos" asp-route-posicion="@i">Pagina: @numPag</a>
+    numPag++;
+
 }
 <h1>GrupoVIstaDepartamentos PAginacion completa</h1>
 
 <hr />
 @Html.Raw(
-ViewData["LINKS"])
+html)
 <hr />
 
 <table class="table">

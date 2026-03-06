@@ -58,14 +58,9 @@ namespace MvcCorePaginacionRegistros.Controllers
             //VOY A REALIZAR EL DIBUJO DESDES AQUI,NO DESDE RAZOR.
             int numPag = 1;
             int numRegistros = await this.repo.GetNumeroRegistrosVistaDepartamentosASync();
-            string html = "<div>";
-            for (int i = 1; i <= numRegistros; i+=2)
-            {
-                html += "<a href='GrupoVIstaDepartamentos?posicion=" + i + "'>Pagina "+ numPag + "</a> |";
-                numPag++;
-            }
-            html += "</div>";
-            ViewData["LINKS"] = html;
+            
+            ViewData["NUMREG"] = numRegistros;
+            ViewData["NUMPAG"] = numPag;
             List<VistaDepartamento> departamentos = await this.repo.GetGrupoDepartamentosAsync(posicion.Value);
 
 
