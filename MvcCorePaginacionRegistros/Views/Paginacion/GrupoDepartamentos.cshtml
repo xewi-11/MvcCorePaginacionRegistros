@@ -1,0 +1,38 @@
+﻿@model List<Departamento>
+
+@{
+    int pagina = 1;
+    int numeroRegistros = (int)ViewData["NUMEROREGISTROS"];
+}
+
+<h1>Paginación en grupo</h1>
+
+<hr />
+<div>
+    @for (int i = 1; i <= numeroRegistros; i += 2)
+    {
+        <a asp-action="GrupoVistaDepartamentos" asp-route-posicion="@i">Página @pagina)</a>
+        pagina++;
+    }
+</div>
+<hr />
+
+<table class="table table-warning">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Localidad</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Departamento departamento in Model)
+        {
+            <tr>
+                <td>@departamento.IdDepartamento</td>
+                <td>@departamento.Nombre</td>
+                <td>@departamento.Localidad</td>
+            </tr>
+        }
+    </tbody>
+</table>
