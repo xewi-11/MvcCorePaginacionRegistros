@@ -165,7 +165,7 @@ namespace MvcCorePaginacionRegistros.Controllers
             }
 
             // Obtener el modelo completo (empleado, total registros y departamento)
-            ModelEmpleadosDepartamento model = await this.repo.GetEmpleadoByDepartamentoYPosicionAsync(posicion.Value, iddepartamento);
+            ModelEmpleadosDepartamento model = await this.repo.GetEmpleadoByDepartamentoYPosicionEntityfRameworkAsync(posicion.Value, iddepartamento);
 
             // El número de registros ya viene en el modelo
             int numeroRegistros = model.numregistros;

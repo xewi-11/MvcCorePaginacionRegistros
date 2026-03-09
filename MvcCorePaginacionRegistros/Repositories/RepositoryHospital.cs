@@ -202,5 +202,31 @@ namespace MvcCorePaginacionRegistros.Repositories
                     dept = departamento
                 };
             }
+        public async Task<ModelEmpleadosDepartamento> GetEmpleadoByDepartamentoYPosicionEntityfRameworkAsync(int posicion, int dept_no)
+        {
+            // Obtener el empleado en la posición específica sin cargar todos en memoria
+            Empleado empleado = await this.context.Empleados
+                .Where(e => e.IdDepartamento == dept_no)
+                .OrderBy(e => e.Apellido)
+                .Skip(posicion - 1)
+                .Take(1)
+                .FirstOrDefaultAsync();
+
+            // Obtener el total de empleados del departamento
+            int totalEmpleados = await this.context.Empleados
+                .Where(e => e.IdDepartamento == dept_no)
+                .CountAsync();
+
+            // Obtener información del departamento
+            Departamento departamento = await this.context.Departamentos
+                .FirstOrDefaultAsync(d => d.IdDepartamento == dept_no);
+
+            return new ModelEmpleadosDepartamento
+            {
+                empleados = empleado,
+                numregistros = totalEmpleados,
+                dept = departamento
+            };
+        }
     }
 }
